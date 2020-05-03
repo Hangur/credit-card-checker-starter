@@ -11,6 +11,7 @@ const invalid2 = [5, 7, 9, 5, 5, 9, 3, 3, 9, 2, 1, 3, 4, 6, 4, 3];
 const invalid3 = [3, 7, 5, 7, 9, 6, 0, 8, 4, 4, 5, 9, 9, 1, 4];
 const invalid4 = [6, 0, 1, 1, 1, 2, 7, 9, 6, 1, 7, 7, 7, 9, 3, 5];
 const invalid5 = [5, 3, 8, 2, 0, 1, 9, 7, 7, 2, 8, 8, 3, 8, 5, 4];
+const invalid6 = [7, 8, 9, 1, 1, 2, 7, 9, 7, 1, 0, 9, 1];
 
 // Can be either valid or invalid
 const mystery1 = [3, 4, 4, 8, 0, 1, 9, 6, 8, 3, 0, 5, 4, 1, 4];
@@ -19,7 +20,7 @@ const mystery3 = [6, 0, 1, 1, 3, 7, 7, 0, 2, 0, 9, 6, 2, 6, 5, 6, 2, 0, 3];
 const mystery4 = [4, 9, 2, 9, 8, 7, 7, 1, 6, 9, 2, 1, 7, 0, 9, 3];
 const mystery5 = [4, 9, 1, 3, 5, 4, 0, 4, 6, 3, 0, 7, 2, 5, 2, 3];
 
-const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, invalid3, invalid4, invalid5, mystery1, mystery2, mystery3, mystery4, mystery5];
+const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, invalid3, invalid4, invalid5, invalid6, mystery1, mystery2, mystery3, mystery4, mystery5];
 
 
 const validateCred = (array) => {
@@ -59,3 +60,31 @@ const findInvalidCards = (batch) => {
     }
     return batchOfInvalid;
 };
+
+const idInvalidCardCompanies = (batchOfInvalid) => {
+    const creditCardCompanies = {
+        3: 'Amex',
+        4: 'Visa',
+        5: 'Mastercard',
+        6: 'Discover'
+    };
+
+    const companies = [];
+
+    for (let i = 0; i < batchOfInvalid.length; i++) {
+        const currentInvalidCard = batchOfInvalid[i];
+        const firstNumber = currentInvalidCard[0];
+        const company = creditCardCompanies[firstNumber];
+        if (typeof company === 'undefined') {
+            console.log('Company not found!');
+        } else {
+            if (!companies.includes(company)) {
+                companies.push(company);
+            }
+        }     
+    }
+    return companies;
+};
+
+const batchOfInvalid = findInvalidCards(batch);
+const invalidCompanies = idInvalidCardCompanies(batchOfInvalid);
