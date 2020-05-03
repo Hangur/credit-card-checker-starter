@@ -19,16 +19,43 @@ const mystery3 = [6, 0, 1, 1, 3, 7, 7, 0, 2, 0, 9, 6, 2, 6, 5, 6, 2, 0, 3];
 const mystery4 = [4, 9, 2, 9, 8, 7, 7, 1, 6, 9, 2, 1, 7, 0, 9, 3];
 const mystery5 = [4, 9, 1, 3, 5, 4, 0, 4, 6, 3, 0, 7, 2, 5, 2, 3];
 
-// An array of all the arrays above
 const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, invalid3, invalid4, invalid5, mystery1, mystery2, mystery3, mystery4, mystery5];
 
 
-// Add your functions below:
+const validateCred = (array) => {
+    let multiplyByTwo = false;
+    const register = [];
 
+    for (let i = array.length -1; i >= 0; i--) {
+        if (!multiplyByTwo) {
+            register.push(array[i]);
+        } else {
+            const tempNumber = array[i] * 2;
+            if (tempNumber > 9) {
+                register.push(tempNumber - 9);
+            } else {
+                register.push(tempNumber);
+            }
+        }
+        multiplyByTwo = !multiplyByTwo;
+    }
 
+    let sum = 0;
+    for (let i = 0; i < register.length; i++) {
+        sum = sum + register[i];
+    }
+    const result = sum % 10;
+    return result === 0;
+};
 
-
-
-
-
-
+const findInvalidCards = (batch) => {
+    const batchOfInvalid = [];
+    for (let i = 0; i < batch.length; i++) {
+        const currentCreditCard = batch[i];
+        const result = validateCred(currentCreditCard);
+        if (!result) {
+            batchOfInvalid.push(currentCreditCard);
+        }
+    }
+    return batchOfInvalid;
+};
