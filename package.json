@@ -1,0 +1,31 @@
+{
+  "name": "credit-card-checker-starter",
+  "version": "0.1.0",
+  "description": "Credit card validator pet project",
+  "main": "main.js",
+  "scripts": {
+    "test": "mocha --require @babel/register"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hangur/credit-card-checker-starter.git"
+  },
+  "author": "Hangur",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Hangur/credit-card-checker-starter/issues"
+  },
+  "homepage": "https://github.com/Hangur/credit-card-checker-starter#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/register": "^7.9.0",
+    "chai": "^4.2.0",
+    "mocha": "^7.2.0"
+  }
+}
