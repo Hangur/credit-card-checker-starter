@@ -54,7 +54,7 @@ const idInvalidCardCompanies = (batchOfInvalid) => {
         const firstNumber = currentInvalidCard[0];
         const company = creditCardCompanies[firstNumber];
         if (typeof company === 'undefined') {
-            console.log('Company not found!');
+            throw new Error('Company not found!');
         } else {
             if (!companies.includes(company)) {
                 companies.push(company);
@@ -66,7 +66,8 @@ const idInvalidCardCompanies = (batchOfInvalid) => {
 
 const Validator = {
     validateCreditCard: validateCreditCard,
-    findInvalidCards: findInvalidCards
+    findInvalidCards: findInvalidCards,
+    idInvalidCardCompanies: idInvalidCardCompanies
 };
 
 export default Validator;
