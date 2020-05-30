@@ -25,6 +25,9 @@ const validateCreditCard = (array) => {
 };
 
 const findInvalidCards = (batch) => {
+    if (typeof batch === 'undefined') {
+        return [];
+    }
     const batchOfInvalid = [];
     for (let i = 0; i < batch.length; i++) {
         const currentCreditCard = batch[i];
@@ -61,11 +64,9 @@ const idInvalidCardCompanies = (batchOfInvalid) => {
     return companies;
 };
 
-//const batchOfInvalid = findInvalidCards(batch);
-//const invalidCompanies = idInvalidCardCompanies(batchOfInvalid);
-
 const Validator = {
-    validateCreditCard: validateCreditCard
+    validateCreditCard: validateCreditCard,
+    findInvalidCards: findInvalidCards
 };
 
 export default Validator;
